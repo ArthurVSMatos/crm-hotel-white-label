@@ -6,7 +6,7 @@ from urllib.parse import quote_plus  ## caso a sua senha do banco tenha @
 app = Flask(__name__)
 CORS(app) # Permite que o React acesse esta API sem erros de segurança
 
-senha_com_at = "251511aA@"
+senha_com_at = ""
 
 # Formata a Senha para ser aceita
 senha_escapada = quote_plus(senha_com_at)

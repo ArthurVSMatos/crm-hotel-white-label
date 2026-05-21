@@ -1,5 +1,6 @@
 import { useState } from "react";
-//logo 
+import { Link } from "react-router-dom";
+// logo 
 import logoImg from "../../assets/logo.png"; 
 
 export default function Login() {
@@ -38,8 +39,9 @@ export default function Login() {
       setErrors(newErrors);
       return;
     }
-    {/* Apagar isso quando publicar */}
-    alert("Validações de front aprovadas! Enviando ao backend...");
+    
+    /* Apagar isso quando publicar */
+    alert("Validações de front aprovadas! enviando ao backend...");
     console.log("Dados prontos para envio:", formData);
   };
 
@@ -111,7 +113,8 @@ export default function Login() {
 
           <div className="flex justify-between items-center text-sm mt-2">
             <a href="#" className="text-gray-300 hover:text-white transition-colors">Esqueceu a senha?</a>
-            <a href="#" className="text-amber-500 hover:text-amber-400 font-semibold transition-colors">Criar Conta</a>
+            {/* Correção aplicada aqui (Link com L maiúsculo) */}
+            <Link to="/registro" className="text-amber-500 hover:text-amber-400 font-semibold transition-colors">Criar Conta</Link>
           </div>
 
           <button

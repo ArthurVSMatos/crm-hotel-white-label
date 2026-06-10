@@ -1,5 +1,5 @@
-import Sidebar from "../../components-Dashboard/Sidebar";
-import MetricCard from "../../components-Dashboard/MetricCard";
+import Sidebar from "./components/Sidebar";
+import MetricCard from "./components/MetricCard";
 import "./Dashboard.css";
 
 // Página principal do Dashboard

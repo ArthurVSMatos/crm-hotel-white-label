@@ -1,0 +1,139 @@
+.financeiro-page {
+  width: 100%;
+}
+
+.financeiro-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.financeiro-header h1 {
+  font-size: 1.4rem;
+}
+
+.btn-despesa {
+  background: #014737;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.financeiro-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.finance-card {
+  background: white;
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.finance-card p {
+  font-weight: 700;
+  color: #334155;
+}
+
+.green {
+  color: #00b050;
+}
+
+.red {
+  color: #ff1f1f;
+}
+
+.orange {
+  color: #ff8c00;
+}
+
+.financeiro-content {
+  display: grid;
+  grid-template-columns: 2fr 0.8fr;
+  gap: 30px;
+  margin-top: 24px;
+}
+
+.bar-chart {
+  height: 220px;
+  display: flex;
+  align-items: end;
+  gap: 70px;
+  padding: 20px 10px;
+}
+
+.bar {
+  width: 36px;
+  background: #014737;
+}
+
+.bar.small {
+  height: 70px;
+}
+
+.bar.medium {
+  height: 110px;
+}
+
+.bar.large {
+  height: 170px;
+}
+
+.expense-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.expense-table th,
+.expense-table td {
+  padding: 18px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.expense-table th {
+  background: #e5e7eb;
+  color: #334155;
+}
+
+.edit,
+.delete {
+  background: none;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.edit {
+  color: #00b050;
+}
+
+.delete {
+  color: #ff1f1f;
+}
+
+.ticket-card {
+  background: white;
+  padding: 28px;
+  border-radius: 14px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.export-btn {
+  width: 100%;
+  background: #e6e5dc;
+  border: none;
+  padding: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}

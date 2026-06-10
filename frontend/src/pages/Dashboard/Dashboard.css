@@ -195,9 +195,9 @@
   text-align: left;
   font-weight: 600;
   cursor: pointer;
+  text-decoration: none;
 }
 
-/* Botão ativo igual ao Dashboard amarelo do Figma */
 .menu-item.active {
   background: #d4a319;
   color: #014737;

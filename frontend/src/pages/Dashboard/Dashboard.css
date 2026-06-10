@@ -1,0 +1,204 @@
+/* Sidebar */
+
+
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #014737;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 15px 0;
+  cursor: pointer;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+
+/* Card Estilização */
+
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.metric-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.metric-card p {
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.metric-card h2 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.metric-card {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+
+  transition: 0.3s;
+}
+
+.metric-card:hover {
+  transform: translateY(-4px);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-icon {
+  width: 50px;
+  height: 50px;
+
+  background: #f4f4f4;
+
+  border-radius: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.4rem;
+
+  color: #014737;
+}
+
+.growth {
+  background: #e8f8ee;
+  color: #16a34a;
+
+  padding: 6px 12px;
+
+  border-radius: 999px;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.card-title {
+  color: #777;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+.card-value {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #222;
+}
+
+/* Estilização Menu Lateral*/
+
+.dashboard-main {
+  margin-top: 30px;
+
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+
+  gap: 20px;
+}
+
+.chart-box,
+.checkins-box {
+  background: white;
+
+  border-radius: 20px;
+
+  padding: 25px;
+
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.fake-chart {
+  margin-top: 20px;
+
+  height: 350px;
+
+  border-radius: 12px;
+
+  background: #f5f5f5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #777;
+}
+
+.checkin-item {
+  margin-top: 15px;
+
+  padding: 15px;
+
+  border: 1px solid #e5e5e5;
+
+  border-radius: 12px;
+}
+
+.checkin-item p {
+  margin-top: 5px;
+  color: #666;
+}
+
+/* Logo da Sidebar */
+.sidebar-logo {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Área dos botões da Sidebar */
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Botões do menu lateral */
+.menu-item {
+  border: none;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: #f5f5f5;
+  color: #1f2937;
+  text-align: left;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Botão ativo igual ao Dashboard amarelo do Figma */
+.menu-item.active {
+  background: #d4a319;
+  color: #014737;
+}

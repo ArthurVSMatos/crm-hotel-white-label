@@ -202,3 +202,17 @@
   background: #d4a319;
   color: #014737;
 }
+
+/* Logo DealFLow */
+.sidebar-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.logo-img {
+  width: 140px;
+  height: auto;
+  object-fit: contain;
+}

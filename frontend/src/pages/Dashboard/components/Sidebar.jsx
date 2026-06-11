@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import logo from "../../../assets/logo.png";
 
 // Menu lateral do Dashboard
 export default function Sidebar() {
@@ -6,7 +7,7 @@ export default function Sidebar() {
     <aside className="sidebar">
       {/* Logo / nome do sistema */}
       <div className="sidebar-logo">
-        <h2>DealFlow</h2>
+        <img src={logo} alt="DealFlow" className="logo-img" />
       </div>
 
       {/* Links do menu */}

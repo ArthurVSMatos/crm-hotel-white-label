@@ -137,3 +137,69 @@
   border-radius: 8px;
   cursor: pointer;
 }
+
+/* Formulario de Despesas */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background: white;
+  width: 400px;
+  padding: 24px;
+  border-radius: 16px;
+}
+
+.modal input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.modal select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.input-money {
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.input-money span {
+  padding: 12px;
+  background: #f3f4f6;
+  font-weight: 600;
+}
+
+.input-money input {
+  border: none;
+  margin: 0;
+  flex: 1;
+}
+
+.input-money input:focus {
+  outline: none;
+}

@@ -16,7 +16,7 @@ export default function Sidebar() {
         </NavLink>
 
         <NavLink to="/whitelabel" className="menu-item">
-          White Label
+          Vitrine
         </NavLink>
 
         <NavLink to="/calendario" className="menu-item">

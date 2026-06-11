@@ -9,8 +9,18 @@ import {
 
 // Página de relatório financeiro do CRM
 export default function Financeiro() {
-  // Controla a abertura e fechamento do modal de despesa
+  // Controla a abertura e fechamento do modal de cadastrar/editar despesa
   const [modalAberto, setModalAberto] = useState(false);
+
+  // Guarda qual despesa está sendo editada
+  // Se for null, significa que estamos cadastrando uma nova despesa
+  const [despesaEditando, setDespesaEditando] = useState(null);
+
+  // Controla a abertura e fechamento do modal de confirmação de exclusão
+  const [modalExcluirAberto, setModalExcluirAberto] = useState(false);
+
+  // Guarda temporariamente qual despesa o usuário quer excluir
+  const [despesaParaExcluir, setDespesaParaExcluir] = useState(null);
 
   // Lista de despesas exibidas na tabela
   // Primeiro tenta carregar do localStorage. Se não existir, usa os dados padrão.
@@ -24,7 +34,7 @@ export default function Financeiro() {
     return despesasRecentes;
   });
 
-  // Dados digitados no formulário de nova despesa
+  // Dados digitados no formulário de nova despesa ou edição
   const [novaDespesa, setNovaDespesa] = useState({
     descricao: "",
     categoria: "",
@@ -37,8 +47,15 @@ export default function Financeiro() {
     localStorage.setItem("despesas", JSON.stringify(despesas));
   }, [despesas]);
 
-  // Salva uma nova despesa temporariamente no FrontEnd
+  // Salva uma nova despesa ou atualiza uma despesa existente
   function salvarDespesa() {
+    const valorFormatado = Number(novaDespesa.valor).toLocaleString(
+      "pt-BR",
+      {
+        style: "currency",
+        currency: "BRL",
+      }
+    );
     const categoriaFinal =
       novaDespesa.categoria === "Outros"
         ? novaDespesa.categoriaOutro
@@ -54,13 +71,22 @@ export default function Financeiro() {
     }
 
     const despesa = {
-      id: Date.now(),
+      id: despesaEditando ? despesaEditando.id : Date.now(),
       descricao: novaDespesa.descricao,
       categoria: categoriaFinal,
-      valor: `R$ ${novaDespesa.valor}`,
+      valor: valorFormatado,
     };
 
-    setDespesas([...despesas, despesa]);
+    if (despesaEditando) {
+      const despesasAtualizadas = despesas.map((item) =>
+        item.id === despesaEditando.id ? despesa : item
+      );
+
+      setDespesas(despesasAtualizadas);
+      setDespesaEditando(null);
+    } else {
+      setDespesas([...despesas, despesa]);
+    }
 
     setNovaDespesa({
       descricao: "",
@@ -72,12 +98,46 @@ export default function Financeiro() {
     setModalAberto(false);
   }
 
-  function deletarDespesa(id) {
+  // Abre o modal de confirmação antes de excluir
+  function abrirModalExcluir(despesa) {
+    setDespesaParaExcluir(despesa);
+    setModalExcluirAberto(true);
+  }
+
+  // Cancela a exclusão
+  function cancelarExclusao() {
+    setDespesaParaExcluir(null);
+    setModalExcluirAberto(false);
+  }
+
+  // Confirma a exclusão da despesa selecionada
+  function confirmarExclusao() {
     const despesasAtualizadas = despesas.filter(
-      (despesa) => despesa.id !== id
+      (despesa) => despesa.id !== despesaParaExcluir.id
     );
 
     setDespesas(despesasAtualizadas);
+    setDespesaParaExcluir(null);
+    setModalExcluirAberto(false);
+  }
+
+  function abrirModalEdicao(despesa) {
+    const valorSemFormatacao = String(despesa.valor)
+      .replace("R$", "")
+      .replace(/\./g, "")
+      .replace(",", ".")
+      .trim();
+
+    setDespesaEditando(despesa);
+
+    setNovaDespesa({
+      descricao: despesa.descricao,
+      categoria: despesa.categoria,
+      categoriaOutro: "",
+      valor: valorSemFormatacao,
+    });
+
+    setModalAberto(true);
   }
 
   return (
@@ -155,10 +215,16 @@ export default function Financeiro() {
                     <td>{despesa.categoria}</td>
                     <td className="red">{despesa.valor}</td>
                     <td>
-                      <button className="edit">EDITAR</button>
+                      <button
+                        className="edit"
+                        onClick={() => abrirModalEdicao(despesa)}
+                      >
+                        EDITAR
+                      </button>
+
                       <button
                         className="delete"
-                        onClick={() => deletarDespesa(despesa.id)}
+                        onClick={() => abrirModalExcluir(despesa)}
                       >
                         DELETAR
                       </button>
@@ -180,11 +246,13 @@ export default function Financeiro() {
           </aside>
         </div>
 
-        {/* Modal para cadastrar nova despesa */}
+                {/* Modal para cadastrar ou editar despesa */}
         {modalAberto && (
           <div className="modal-overlay">
             <div className="modal">
-              <h2>Lançar Despesa</h2>
+              <h2>
+                {despesaEditando ? "Editar Despesa" : "Lançar Despesa"}
+              </h2>
 
               <input
                 type="text"
@@ -217,7 +285,6 @@ export default function Financeiro() {
                 <option value="Outros">Outros</option>
               </select>
 
-              {/* Campo aparece apenas quando a categoria "Outros" é selecionada */}
               {novaDespesa.categoria === "Outros" && (
                 <input
                   type="text"
@@ -249,7 +316,18 @@ export default function Financeiro() {
               </div>
 
               <div className="modal-actions">
-                <button onClick={() => setModalAberto(false)}>
+                <button
+                  onClick={() => {
+                    setModalAberto(false);
+                    setDespesaEditando(null);
+                    setNovaDespesa({
+                      descricao: "",
+                      categoria: "",
+                      categoriaOutro: "",
+                      valor: "",
+                    });
+                  }}
+                >
                   Cancelar
                 </button>
 
@@ -257,7 +335,34 @@ export default function Financeiro() {
                   className="btn-despesa"
                   onClick={salvarDespesa}
                 >
-                  Salvar
+                  {despesaEditando ? "Salvar Alterações" : "Salvar"}
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Modal de confirmação de exclusão */}
+        {modalExcluirAberto && (
+          <div className="modal-overlay">
+            <div className="modal confirm-modal">
+              <h2>Excluir despesa</h2>
+
+              <p>
+                Tem certeza que deseja excluir a despesa{" "}
+                <strong>{despesaParaExcluir?.descricao}</strong>?
+              </p>
+
+              <div className="modal-actions">
+                <button onClick={cancelarExclusao}>
+                  Cancelar
+                </button>
+
+                <button
+                  className="delete-confirm"
+                  onClick={confirmarExclusao}
+                >
+                  Excluir
                 </button>
               </div>
             </div>

@@ -1,6 +1,15 @@
+/* ==============================
+   Página Financeiro
+================================ */
+
 .financeiro-page {
   width: 100%;
 }
+
+
+/* ==============================
+   Cabeçalho
+================================ */
 
 .financeiro-header {
   display: flex;
@@ -23,6 +32,11 @@
   cursor: pointer;
 }
 
+
+/* ==============================
+   Cards de resumo financeiro
+================================ */
+
 .financeiro-cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -40,6 +54,11 @@
   color: #334155;
 }
 
+
+/* ==============================
+   Cores utilitárias
+================================ */
+
 .green {
   color: #00b050;
 }
@@ -52,12 +71,22 @@
   color: #ff8c00;
 }
 
+
+/* ==============================
+   Layout principal
+================================ */
+
 .financeiro-content {
   display: grid;
   grid-template-columns: 2fr 0.8fr;
   gap: 30px;
   margin-top: 24px;
 }
+
+
+/* ==============================
+   Gráfico temporário
+================================ */
 
 .bar-chart {
   height: 220px;
@@ -83,6 +112,11 @@
 .bar.large {
   height: 170px;
 }
+
+
+/* ==============================
+   Tabela de despesas
+================================ */
 
 .expense-table {
   width: 100%;
@@ -121,6 +155,11 @@
   color: #ff1f1f;
 }
 
+
+/* ==============================
+   Coluna lateral direita
+================================ */
+
 .ticket-card {
   background: white;
   padding: 28px;
@@ -138,12 +177,16 @@
   cursor: pointer;
 }
 
-/* Formulario de Despesas */
+
+/* ==============================
+   Modal base
+================================ */
 
 .modal-overlay {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.45);
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -156,7 +199,8 @@
   border-radius: 16px;
 }
 
-.modal input {
+.modal input,
+.modal select {
   width: 100%;
   padding: 12px;
   margin-top: 12px;
@@ -171,13 +215,10 @@
   margin-top: 20px;
 }
 
-.modal select {
-  width: 100%;
-  padding: 12px;
-  margin-top: 12px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-}
+
+/* ==============================
+   Campo monetário do modal
+================================ */
 
 .input-money {
   display: flex;
@@ -202,4 +243,29 @@
 
 .input-money input:focus {
   outline: none;
+}
+
+
+/* ==============================
+   Modal de confirmação de exclusão
+================================ */
+
+.confirm-modal p {
+  margin-top: 12px;
+  color: #333;
+  line-height: 1.5;
+}
+
+.delete-confirm {
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.delete-confirm:hover {
+  background: #b91c1c;
 }

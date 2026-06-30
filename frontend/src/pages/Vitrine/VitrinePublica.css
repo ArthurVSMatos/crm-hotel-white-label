@@ -1,0 +1,474 @@
+/* ══════════════════════════════════════
+   Vitrine pública — landing page do hotel
+   Cores customizáveis via --vitrine-primaria / --vitrine-secundaria
+══════════════════════════════════════ */
+
+.vitrine-page {
+  --vitrine-primaria: #2563eb;
+  --vitrine-secundaria: #1e293b;
+
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #1e293b;
+  background: #ffffff;
+  overflow-x: hidden;
+}
+
+.vitrine-page a {
+  text-decoration: none;
+}
+
+.vitrine-tag {
+  display: inline-block;
+  background: #eef2ff;
+  background: color-mix(in srgb, var(--vitrine-primaria) 14%, white);
+  color: var(--vitrine-primaria);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+
+.vitrine-btn-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--vitrine-primaria);
+  color: white;
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 12px 22px;
+  border-radius: 10px;
+  transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+  white-space: nowrap;
+}
+
+.vitrine-btn-cta:hover {
+  transform: translateY(-1px);
+  opacity: 0.92;
+}
+
+.vitrine-btn-cta--grande {
+  padding: 16px 32px;
+  font-size: 1rem;
+}
+
+.vitrine-btn-cta--desabilitado {
+  background: #94a3b8;
+  cursor: not-allowed;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.vitrine-btn-cta--desabilitado:hover {
+  transform: none;
+  opacity: 0.7;
+}
+
+
+/* ══════════════════════════════════════
+   Header
+══════════════════════════════════════ */
+
+.vitrine-header {
+  background: var(--vitrine-secundaria);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.vitrine-header-conteudo {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.vitrine-marca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-weight: 800;
+  font-size: 1.05rem;
+  flex-shrink: 0;
+}
+
+.vitrine-marca img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: white;
+}
+
+.vitrine-marca-placeholder {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  font-size: 1.1rem;
+}
+
+.vitrine-nav {
+  display: flex;
+  gap: 28px;
+}
+
+.vitrine-nav a {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: color 0.15s;
+}
+
+.vitrine-nav a:hover {
+  color: white;
+}
+
+
+/* ══════════════════════════════════════
+   Hero
+══════════════════════════════════════ */
+
+.vitrine-hero {
+  background: var(--vitrine-secundaria);
+  background: linear-gradient(160deg, var(--vitrine-secundaria), color-mix(in srgb, var(--vitrine-secundaria) 70%, black));
+  padding: 90px 32px;
+  text-align: center;
+}
+
+.vitrine-hero-conteudo {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.vitrine-hero h1 {
+  color: white;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.vitrine-hero p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.05rem;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+
+/* ══════════════════════════════════════
+   Quartos
+══════════════════════════════════════ */
+
+.vitrine-quartos {
+  padding: 80px 32px;
+  background: #fafaf9;
+}
+
+.vitrine-secao-titulo {
+  max-width: 640px;
+  margin: 0 auto 50px;
+  text-align: center;
+}
+
+.vitrine-secao-titulo h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.vitrine-secao-titulo p {
+  color: #64748b;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.vitrine-quartos-grid {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.vitrine-quarto-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #eef1f5;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.vitrine-quarto-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.1);
+}
+
+.vitrine-quarto-imagem {
+  height: 180px;
+  background: var(--vitrine-secundaria);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.vitrine-quarto-imagem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vitrine-quarto-imagem span {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.82rem;
+}
+
+.vitrine-quarto-info {
+  padding: 20px;
+}
+
+.vitrine-quarto-info h3 {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.vitrine-quarto-info p {
+  color: #64748b;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  margin-bottom: 18px;
+  min-height: 42px;
+}
+
+.vitrine-quarto-rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.vitrine-quarto-preco {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--vitrine-primaria);
+}
+
+.vitrine-quarto-preco-sufixo {
+  font-size: 0.76rem;
+  color: #94a3b8;
+  margin-left: 2px;
+}
+
+
+/* ══════════════════════════════════════
+   Contato + mapa
+══════════════════════════════════════ */
+
+.vitrine-contato {
+  padding: 80px 32px;
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.vitrine-contato-info h2 {
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.vitrine-contato-info > p {
+  color: #64748b;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.vitrine-contato-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 18px;
+}
+
+.vitrine-contato-item strong {
+  font-size: 0.86rem;
+  color: #0f172a;
+}
+
+.vitrine-contato-item span {
+  font-size: 0.86rem;
+  color: #64748b;
+}
+
+.vitrine-btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 14px 26px;
+  background: #16a34a;
+  color: white;
+  font-weight: 700;
+  font-size: 0.92rem;
+  border-radius: 10px;
+  transition: transform 0.15s, opacity 0.15s;
+}
+
+.vitrine-btn-whatsapp:hover {
+  transform: translateY(-1px);
+  opacity: 0.92;
+}
+
+.vitrine-btn-whatsapp--desabilitado {
+  background: #94a3b8;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.vitrine-btn-whatsapp--desabilitado:hover {
+  transform: none;
+}
+
+.vitrine-mapa {
+  display: flex;
+  flex-direction: column;
+}
+
+.vitrine-mapa iframe {
+  width: 100%;
+  height: 320px;
+  border: 1px solid #eef1f5;
+  border-radius: 14px;
+}
+
+.vitrine-mapa-vazio {
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f5f9;
+  border-radius: 14px;
+  color: #94a3b8;
+  font-size: 0.86rem;
+}
+
+
+/* ══════════════════════════════════════
+   Footer
+══════════════════════════════════════ */
+
+.vitrine-footer {
+  background: var(--vitrine-secundaria);
+  padding: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.vitrine-footer strong {
+  color: white;
+  font-size: 1rem;
+}
+
+.vitrine-footer p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.82rem;
+  margin-top: 4px;
+}
+
+.vitrine-footer-direita {
+  text-align: right;
+}
+
+.vitrine-footer a {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+}
+
+.vitrine-footer a:hover {
+  text-decoration: underline;
+}
+
+
+/* ══════════════════════════════════════
+   Estados (carregando / erro)
+══════════════════════════════════════ */
+
+.vitrine-estado {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #64748b;
+  font-size: 1.1rem;
+}
+
+
+/* ══════════════════════════════════════
+   Responsividade
+══════════════════════════════════════ */
+
+@media (max-width: 900px) {
+  .vitrine-quartos-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .vitrine-contato {
+    grid-template-columns: 1fr;
+  }
+
+  .vitrine-footer-direita {
+    text-align: left;
+  }
+}
+
+@media (max-width: 640px) {
+  .vitrine-nav {
+    display: none;
+  }
+
+  .vitrine-quartos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vitrine-hero {
+    padding: 64px 20px;
+  }
+
+  .vitrine-quartos,
+  .vitrine-contato {
+    padding: 56px 20px;
+  }
+
+  .vitrine-header-conteudo {
+    padding: 14px 20px;
+  }
+}

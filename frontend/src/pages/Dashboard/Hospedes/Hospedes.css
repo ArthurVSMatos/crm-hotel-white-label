@@ -1,0 +1,782 @@
+.hospedes-pagina {
+  padding: 32px 28px;
+  min-height: 100%;
+}
+
+/* ── Topo ── */
+
+.hospedes-topo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.hospedes-titulo h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 4px;
+}
+
+.hospedes-titulo p {
+  font-size: 13px;
+  color: #8a8fab;
+  margin: 0;
+}
+
+/* ── Toolbar ── */
+
+.hospedes-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.hospedes-busca {
+  position: relative;
+  flex: 1;
+}
+
+.busca-icone {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #8a8fab;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
+.busca-input {
+  width: 100%;
+  padding: 10px 12px 10px 38px;
+  border: 1px solid #e4e6f0;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 13px;
+  color: #1a1a2e;
+  outline: none;
+  transition: border-color 0.2s;
+  font-family: inherit;
+}
+
+.busca-input::placeholder { color: #b0b4cc; }
+.busca-input:focus { border-color: #1b4332; }
+
+.hospedes-toolbar-acoes {
+  display: flex;
+  gap: 10px;
+}
+
+.filtro-status {
+  padding: 10px 32px 10px 14px;
+  border: 1px solid #e4e6f0;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 13px;
+  color: #4a4f6b;
+  font-family: inherit;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 8l5 5 5-5' stroke='%238A8FAB' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+  transition: border-color 0.2s;
+  white-space: nowrap;
+}
+
+.filtro-status:focus { border-color: #1b4332; }
+
+@media (max-width: 768px) {
+  .filtro-status {
+    flex: 1 1 100%;
+  }
+}
+
+/* ── Botões ── */
+
+.botao-primario {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  background: #1b4332;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.18s, box-shadow 0.18s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.botao-primario:hover {
+  background: #163829;
+  box-shadow: 0 2px 8px rgba(27, 67, 50, 0.3);
+}
+
+.botao-primario:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.botao-primario--cheio {
+  width: 100%;
+  justify-content: center;
+  padding: 12px;
+  font-size: 14px;
+}
+
+.botao-secundario {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  background: #fff;
+  color: #4a4f6b;
+  border: 1px solid #e4e6f0;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.botao-secundario:hover { background: #f5f6fa; }
+
+/* ── Alerta ── */
+
+.alerta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 16px;
+  animation: alertaEntrada 0.2s ease;
+}
+
+@keyframes alertaEntrada {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.alerta-erro {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.alerta-sm {
+  margin-bottom: 0;
+  padding: 8px 12px;
+  font-size: 12px;
+}
+
+.alerta-fechar {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  margin-left: auto;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.alerta-fechar:hover { opacity: 1; }
+
+/* ── Tabela ── */
+
+.hospedes-tabela-wrapper {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e4e6f0;
+  overflow: hidden;
+}
+
+.estado-vazio {
+  padding: 48px;
+  text-align: center;
+  color: #8a8fab;
+  font-size: 14px;
+}
+
+.hospedes-tabela {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.hospedes-tabela thead tr {
+  background: #fafbfc;
+  border-bottom: 1px solid #e4e6f0;
+}
+
+.hospedes-tabela th {
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  color: #8a8fab;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hospedes-tabela tbody tr {
+  border-bottom: 1px solid #f0f1f7;
+  transition: background 0.15s;
+}
+
+.hospedes-tabela tbody tr:last-child { border-bottom: none; }
+.hospedes-tabela tbody tr:hover      { background: #fafbff; }
+
+.hospedes-tabela td {
+  padding: 14px 16px;
+  vertical-align: middle;
+}
+
+/* Células */
+
+.hospede-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hospede-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.hospede-nome {
+  font-weight: 500;
+  color: #1a1a2e;
+  font-size: 13px;
+}
+
+.hospede-sub,
+.quarto-sub {
+  font-size: 11px;
+  color: #8a8fab;
+  margin-top: 1px;
+}
+
+.quarto-numero {
+  font-weight: 600;
+  color: #1a1a2e;
+  font-size: 13px;
+}
+
+.data-principal {
+  font-size: 13px;
+  font-weight: 500;
+  color: #1a1a2e;
+}
+
+.noites,
+.valor {
+  font-weight: 600;
+  color: #1a1a2e;
+  font-size: 13px;
+}
+
+/* ── Etiquetas de status ── */
+
+.etiqueta {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.etiqueta-sucesso { background: #d1fae5; color: #065f46; }
+.etiqueta-alerta  { background: #fef3c7; color: #92400e; }
+.etiqueta-erro    { background: #fee2e2; color: #991b1b; }
+.etiqueta-neutro  { background: #e0e7ff; color: #3730a3; }
+
+/* ── Menu de ações ── */
+
+.botao-acoes {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #8a8fab;
+  font-size: 16px;
+  letter-spacing: 1px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+
+.botao-acoes:hover {
+  background: #f0f1f7;
+  color: #4a4f6b;
+}
+
+.acoes-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.acoes-menu {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 4px);
+  background: #fff;
+  border: 1px solid #e4e6f0;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  z-index: 200;
+  min-width: 150px;
+  overflow: hidden;
+}
+
+.acoes-menu-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #1a1a2e;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+
+.acoes-menu-item:hover            { background: #f5f6fa; }
+.acoes-menu-item--alerta          { color: #92400e; }
+.acoes-menu-item--alerta:hover    { background: #fef3c7; }
+.acoes-menu-item--erro            { color: #991b1b; }
+.acoes-menu-item--erro:hover      { background: #fee2e2; }
+.acoes-menu-item:disabled         { opacity: 0.5; cursor: not-allowed; }
+
+/* ── Modal ── */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 14px;
+  width: 360px;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+}
+
+.modal::-webkit-scrollbar       { width: 4px; }
+.modal::-webkit-scrollbar-track { background: transparent; }
+.modal::-webkit-scrollbar-thumb { background: #e4e6f0; border-radius: 4px; }
+
+.modal-cabecalho {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 20px 20px 16px;
+  background: #1b4332;
+  border-radius: 14px 14px 0 0;
+}
+
+.modal-titulo {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 3px;
+}
+
+.modal-subtitulo {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+}
+
+.botao-fechar {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: color 0.15s;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.botao-fechar:hover { color: #fff; }
+
+.modal-corpo {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+
+.modal-rodape {
+  padding: 0 20px 20px;
+}
+
+/* ── Campos do formulário ── */
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.campo-linha {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.campo-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #4a4f6b;
+}
+
+.campo-dica {
+  font-size: 11px;
+  color: #8a8fab;
+}
+
+.campo-auto {
+  font-weight: 400;
+  font-style: italic;
+  color: #8a8fab;
+}
+
+.campo-input {
+  padding: 9px 12px;
+  border: 1px solid #e4e6f0;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #1a1a2e;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s;
+  font-family: inherit;
+  width: 100%;
+}
+
+.campo-input::placeholder { color: #b0b4cc; }
+.campo-input:focus        { border-color: #1b4332; }
+
+.campo-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 8l5 5 5-5' stroke='%238A8FAB' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+  cursor: pointer;
+}
+
+.campo-readonly {
+  background: #f5f6fa;
+  color: #8a8fab;
+}
+
+.campo-textarea {
+  resize: vertical;
+  min-height: 68px;
+}
+
+/* ── Resumo ── */
+
+.resumo {
+  border: 1px solid #e4e6f0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.resumo-linha {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 9px 12px;
+}
+
+.resumo-cabecalho {
+  background: #fafbfc;
+  font-size: 11px;
+  font-weight: 600;
+  color: #8a8fab;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  border-bottom: 1px solid #e4e6f0;
+}
+
+.resumo-valores {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+/* ── Responsivo ── */
+
+@media (max-width: 768px) {
+  .hospedes-pagina {
+    padding: 20px 16px;
+  }
+
+  .hospedes-toolbar {
+    flex-wrap: wrap;
+  }
+
+  .hospedes-busca {
+    flex: 1 1 100%;
+  }
+
+  .hospedes-tabela-wrapper {
+    overflow-x: auto;
+  }
+
+  .hospedes-tabela {
+    min-width: 700px;
+  }
+
+  .modal-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .modal {
+    width: 100%;
+    border-radius: 14px 14px 0 0;
+    max-height: 90vh;
+  }
+}
+
+
+/* Wrapper do campo de busca de hóspede */
+.hospede-busca-wrapper {
+  position: relative;
+}
+
+/* Input com hóspede confirmado */
+.campo-input--selecionado {
+  border-color: #4CAF50 !important;
+  background-color: #f6fff6;
+}
+
+/* Botão de limpar seleção */
+.hospede-limpar {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 2px 4px;
+  line-height: 1;
+}
+.hospede-limpar:hover {
+  color: #333;
+}
+
+/* Dropdown de resultados */
+.hospede-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  z-index: 100;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.hospede-dropdown-vazio {
+  padding: 12px 16px;
+  color: #888;
+  font-size: 13px;
+  text-align: center;
+}
+
+.hospede-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 10px 14px;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s;
+}
+.hospede-dropdown-item:hover {
+  background: #f3f4f6;
+}
+.hospede-dropdown-item + .hospede-dropdown-item {
+  border-top: 1px solid #f0f0f0;
+}
+
+.hospede-dropdown-nome {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111;
+}
+.hospede-dropdown-cpf {
+  font-size: 12px;
+  color: #888;
+  margin-top: 1px;
+}
+
+/* Botão "+ Cadastrar novo hóspede" no fim do dropdown */
+.hospede-dropdown-novo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  background: #f0fdf4;
+  border: none;
+  border-top: 1px solid #dcfce7;
+  padding: 12px 14px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  color: #15803d;
+  transition: background 0.15s;
+}
+
+.hospede-dropdown-novo:hover {
+  background: #dcfce7;
+}
+
+.hospede-dropdown-novo-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #16a34a;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* Mini-formulário inline de cadastro rápido de hóspede */
+.hospede-cadastro-rapido {
+  margin-top: 10px;
+  padding: 16px;
+  background: #f9fafb;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+}
+
+.hospede-cadastro-rapido-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.hospede-cadastro-rapido-fechar {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  font-size: 13px;
+  padding: 2px 6px;
+}
+
+.hospede-cadastro-rapido-fechar:hover {
+  color: #4b5563;
+}
+
+.hospede-cadastro-rapido-erro {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+  font-size: 12px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.hospede-cadastro-rapido-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.campo-ajuda-rapido {
+  display: block;
+  font-size: 11px;
+  color: #9ca3af;
+  margin: -6px 0 14px;
+}
+
+.hospede-cadastro-rapido-acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* Avatar pequeno (dentro do dropdown) */
+.hospede-avatar--sm {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+/* Dica de campo com variantes */
+.campo-dica--ok {
+  color: #4CAF50 !important;
+  font-weight: 500;
+}
+.campo-dica--alerta {
+  color: #FF9800 !important;
+}

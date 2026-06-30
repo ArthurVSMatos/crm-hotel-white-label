@@ -1,0 +1,574 @@
+/* ══════════════════════════════════════
+   Página Quartos
+══════════════════════════════════════ */
+
+.quartos-pagina {
+  width: 100%;
+  padding: 28px 32px 56px;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.quartos-topo {
+  margin-bottom: 22px;
+}
+
+.quartos-titulo h1 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+.quartos-titulo p {
+  font-size: 13px;
+  color: #8a8fab;
+  margin: 0;
+}
+
+
+/* ══════════════════════════════════════
+   Toolbar
+══════════════════════════════════════ */
+
+.quartos-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+
+.quartos-busca {
+  position: relative;
+  flex: 1;
+  min-width: 220px;
+}
+
+.busca-icone {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: #b0b4cc;
+  pointer-events: none;
+}
+
+.busca-input {
+  width: 100%;
+  padding: 10px 14px 10px 36px;
+  border: 1px solid #e4e6f0;
+  border-radius: 8px;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s;
+  font-family: inherit;
+}
+
+.busca-input:focus { border-color: #1b4332; }
+
+.filtro-status {
+  padding: 10px 32px 10px 14px;
+  border: 1px solid #e4e6f0;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 13px;
+  color: #4a4f6b;
+  font-family: inherit;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 8l5 5 5-5' stroke='%238A8FAB' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+  white-space: nowrap;
+}
+
+.filtro-status:focus { border-color: #1b4332; }
+
+.quartos-toolbar-acoes {
+  display: flex;
+  gap: 10px;
+}
+
+.botao-primario {
+  background: #1b4332;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.botao-primario:hover { background: #14352767; background: #143527; }
+.botao-primario:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.botao-secundario {
+  background: white;
+  color: #4a4f6b;
+  border: 1px solid #e4e6f0;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+
+.botao-secundario:hover { background: #f5f6fa; }
+
+.botao-perigo {
+  background: white;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.botao-perigo:hover { background: #fef2f2; }
+.botao-perigo:disabled { opacity: 0.6; cursor: not-allowed; }
+
+
+/* ══════════════════════════════════════
+   Alertas / estados
+══════════════════════════════════════ */
+
+.alerta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  margin-bottom: 18px;
+}
+
+.alerta-erro {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.alerta-sm {
+  padding: 10px 14px;
+  margin-bottom: 4px;
+}
+
+.alerta-fechar {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: inherit;
+  opacity: 0.6;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.alerta-fechar:hover { opacity: 1; }
+
+.estado-vazio {
+  text-align: center;
+  padding: 60px 20px;
+  color: #94a3b8;
+  font-size: 0.9rem;
+  background: #fafaf9;
+  border-radius: 14px;
+  border: 1px dashed #e4e6f0;
+}
+
+
+/* ══════════════════════════════════════
+   Grid de cards
+══════════════════════════════════════ */
+
+.quartos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.quarto-card {
+  background: white;
+  border: 1px solid #eef1f5;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 14px rgba(15, 23, 42, 0.04);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.quarto-card:hover {
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+  transform: translateY(-2px);
+}
+
+.quarto-card-foto {
+  position: relative;
+  height: 140px;
+  background: #1b4332;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.quarto-card-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.quarto-card-foto-vazia {
+  font-size: 1.8rem;
+  opacity: 0.4;
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.badge--sucesso { background: #dcfce7; color: #166534; }
+.badge--erro     { background: #fee2e2; color: #991b1b; }
+.badge--alerta   { background: #fef3c7; color: #92400e; }
+.badge--neutro   { background: #e2e8f0; color: #475569; }
+
+.quarto-card-oculto {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 0.66rem;
+  font-weight: 700;
+  background: rgba(15, 23, 42, 0.75);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+
+.quarto-card-corpo {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.quarto-card-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.quarto-card-cabecalho h3 {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.quarto-card-preco {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #1b4332;
+  white-space: nowrap;
+}
+
+.quarto-card-descricao {
+  font-size: 0.82rem;
+  color: #64748b;
+  line-height: 1.5;
+  min-height: 36px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.quarto-card-info {
+  font-size: 0.78rem;
+  color: #94a3b8;
+}
+
+.quarto-card-status-select {
+  padding: 8px 28px 8px 10px;
+  border: 1px solid #e4e6f0;
+  border-radius: 8px;
+  background: #fafaf9;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 8l5 5 5-5' stroke='%238A8FAB' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 14px;
+}
+
+.quarto-card-acoes {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.quarto-card-acoes .botao-secundario,
+.quarto-card-acoes .botao-perigo {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 0.78rem;
+  text-align: center;
+}
+
+
+/* ══════════════════════════════════════
+   Modal
+══════════════════════════════════════ */
+
+.quarto-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 100;
+}
+
+.quarto-modal {
+  background: white;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.25);
+}
+
+.quarto-modal-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid #eef1f5;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 1;
+}
+
+.quarto-modal-cabecalho h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.quarto-modal-fechar {
+  background: #f1f5f9;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  color: #64748b;
+  cursor: pointer;
+}
+
+.quarto-modal-fechar:hover { background: #e2e8f0; }
+
+.quarto-modal-corpo {
+  padding: 22px 24px 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.quarto-modal-rodape {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+
+/* ══════════════════════════════════════
+   Campos do formulário
+══════════════════════════════════════ */
+
+.campo {
+  margin-bottom: 16px;
+}
+
+.campo-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+.campo-obrigatorio {
+  color: #d32f2f;
+  font-weight: 700;
+}
+
+.campo-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid #e4e6f0;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s;
+  background: #fff;
+}
+
+.campo-input:focus { border-color: #1b4332; }
+
+textarea.campo-input { resize: vertical; }
+
+.quarto-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.quarto-form-divisor {
+  border: none;
+  border-top: 1px dashed #e4e6f0;
+  margin: 6px 0 18px;
+}
+
+.quarto-form-vitrine-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.quarto-form-vitrine-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #2563eb;
+  background: #eef2ff;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.toggle-linha {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.toggle-linha input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #2563eb;
+  cursor: pointer;
+}
+
+
+/* ══════════════════════════════════════
+   Foto do quarto (no modal)
+══════════════════════════════════════ */
+
+.quarto-form-foto {
+  margin-bottom: 18px;
+}
+
+.quarto-form-foto-area {
+  position: relative;
+  height: 140px;
+  border-radius: 12px;
+  border: 1.5px dashed #cbd5e1;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.quarto-form-foto-area:hover { border-color: #1b4332; }
+
+.quarto-form-foto-area img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.quarto-form-foto-area span {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.quarto-form-foto-loading {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+
+/* ══════════════════════════════════════
+   Responsividade
+══════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .quartos-pagina {
+    padding: 20px 16px 40px;
+  }
+
+  .quartos-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filtro-status {
+    flex: 1;
+  }
+
+  .quartos-toolbar-acoes {
+    flex-direction: column;
+  }
+
+  .quarto-form-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,522 @@
+/* ══════════════════════════════════════
+   Minhas Vitrines (página principal)
+══════════════════════════════════════ */
+
+.vitrines-pagina {
+  width: 100%;
+  max-width: 980px;
+  padding: 28px 32px 56px;
+  margin: 0 auto;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.vitrines-topo {
+  margin-bottom: 22px;
+}
+
+.vitrines-topo h1 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+.vitrines-topo p {
+  font-size: 13px;
+  color: #8a8fab;
+  margin: 0;
+}
+
+.vitrines-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+
+/* ══════════════════════════════════════
+   Feedback
+══════════════════════════════════════ */
+
+.vitrine-feedback {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  margin-bottom: 18px;
+}
+
+.vitrine-feedback--sucesso {
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.vitrine-feedback--erro {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.vitrine-feedback-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+  background: currentColor;
+}
+
+.vitrine-feedback--sucesso .vitrine-feedback-icon { background: #166534; color: white; }
+.vitrine-feedback--erro .vitrine-feedback-icon { background: #991b1b; color: white; }
+
+.vitrine-feedback-fechar {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: inherit;
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.vitrine-feedback-fechar:hover { opacity: 1; }
+
+
+/* ══════════════════════════════════════
+   Card de preview da vitrine
+══════════════════════════════════════ */
+
+.vitrine-card {
+  background: white;
+  border: 1px solid #eef1f5;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 14px rgba(15, 23, 42, 0.04);
+  display: flex;
+  max-width: 640px;
+}
+
+.vitrine-card-preview {
+  position: relative;
+  width: 180px;
+  flex-shrink: 0;
+  background: linear-gradient(160deg, #1b4332, #0f2a1d);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.vitrine-card-preview img {
+  max-width: 100%;
+  max-height: 80px;
+  object-fit: contain;
+  background: white;
+  border-radius: 10px;
+  padding: 8px;
+}
+
+.vitrine-card-preview-vazio {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.78rem;
+  text-align: center;
+}
+
+.vitrine-status-pill {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 0.66rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+.vitrine-status-pill.ativa { color: #86efac; }
+.vitrine-status-pill.inativa { color: #fca5a5; }
+
+.vitrine-card-info {
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.vitrine-card-info h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+
+.vitrine-card-info p {
+  font-size: 0.84rem;
+  color: #64748b;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.vitrine-card-link {
+  font-size: 0.78rem;
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+  margin-bottom: 16px;
+  word-break: break-all;
+}
+
+.vitrine-card-link:hover { text-decoration: underline; }
+
+.vitrine-card-acoes {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+
+/* ══════════════════════════════════════
+   Botões (compartilhados com o resto do painel)
+══════════════════════════════════════ */
+
+.botao-primario {
+  background: #1b4332;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.botao-primario:hover { background: #143527; }
+.botao-primario:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.botao-secundario {
+  background: white;
+  color: #4a4f6b;
+  border: 1px solid #e4e6f0;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.botao-secundario:hover { background: #f5f6fa; }
+
+
+/* ══════════════════════════════════════
+   Modal — Editor da Vitrine
+══════════════════════════════════════ */
+
+.vitrine-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 100;
+}
+
+.vitrine-modal {
+  background: white;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 560px;
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.25);
+}
+
+.vitrine-modal-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid #eef1f5;
+  flex-shrink: 0;
+}
+
+.vitrine-modal-cabecalho h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.vitrine-modal-fechar {
+  background: #f1f5f9;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  color: #64748b;
+  cursor: pointer;
+}
+
+.vitrine-modal-fechar:hover { background: #e2e8f0; }
+
+.vitrine-modal-corpo {
+  padding: 16px 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.vitrine-modal-rodape {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 16px 24px;
+  border-top: 1px solid #eef1f5;
+  flex-shrink: 0;
+}
+
+
+/* ══════════════════════════════════════
+   Seções colapsáveis (accordion)
+══════════════════════════════════════ */
+
+.vitrine-secao {
+  border: 1px solid #eef1f5;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.vitrine-secao-cabecalho {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: #fafaf9;
+  border: none;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: #0f172a;
+  cursor: pointer;
+  text-align: left;
+}
+
+.vitrine-secao-cabecalho:hover { background: #f4f4f3; }
+
+.vitrine-secao-seta {
+  font-size: 1rem;
+  color: #94a3b8;
+  transition: transform 0.2s;
+}
+
+.vitrine-secao-seta.aberta { transform: rotate(180deg); }
+
+.vitrine-secao-corpo {
+  padding: 18px 16px;
+  border-top: 1px solid #eef1f5;
+}
+
+
+/* ══════════════════════════════════════
+   Campos do formulário
+══════════════════════════════════════ */
+
+.vitrine-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+.vitrine-obrigatorio {
+  color: #d32f2f;
+  font-weight: 700;
+}
+
+.vitrine-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid #e4e6f0;
+  border-radius: 8px;
+  font-size: 0.86rem;
+  font-family: inherit;
+  outline: none;
+  margin-bottom: 14px;
+  transition: border-color 0.15s;
+  background: #fff;
+  color: #0f172a;
+}
+
+.vitrine-input:focus { border-color: #1b4332; }
+
+textarea.vitrine-input { resize: vertical; }
+
+.vitrine-ajuda {
+  display: block;
+  font-size: 0.72rem;
+  color: #94a3b8;
+  margin: -10px 0 14px;
+  line-height: 1.4;
+}
+
+.vitrine-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #f8fafc;
+  border: 1.5px solid #e4e6f0;
+  border-radius: 8px;
+  margin-bottom: 14px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.vitrine-toggle input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #1b4332;
+  cursor: pointer;
+}
+
+.vitrine-slug-wrapper {
+  display: flex;
+  margin-bottom: 6px;
+}
+
+.vitrine-slug-prefixo {
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  background: #f1f5f9;
+  border: 1.5px solid #e4e6f0;
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  color: #64748b;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.vitrine-slug-wrapper .vitrine-input {
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 0;
+}
+
+.vitrine-cor-wrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.vitrine-cor-wrapper input[type="color"] {
+  width: 42px;
+  height: 42px;
+  padding: 3px;
+  flex-shrink: 0;
+  cursor: pointer;
+  border: 1.5px solid #e4e6f0;
+  border-radius: 8px;
+}
+
+.vitrine-cor-wrapper .vitrine-input {
+  margin-bottom: 0;
+}
+
+
+/* ══════════════════════════════════════
+   Upload de logo (Mídia e Fotos)
+══════════════════════════════════════ */
+
+.vitrine-logo-upload {
+  position: relative;
+  height: 110px;
+  border-radius: 10px;
+  border: 1.5px dashed #cbd5e1;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  margin-bottom: 6px;
+  transition: border-color 0.15s;
+}
+
+.vitrine-logo-upload:hover { border-color: #1b4332; }
+
+.vitrine-logo-upload img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.vitrine-logo-upload span {
+  font-size: 0.78rem;
+  color: #94a3b8;
+}
+
+.vitrine-logo-upload-loading {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+
+/* ══════════════════════════════════════
+   Responsividade
+══════════════════════════════════════ */
+
+@media (max-width: 700px) {
+  .vitrines-pagina {
+    padding: 20px 16px 40px;
+  }
+
+  .vitrine-card {
+    flex-direction: column;
+    max-width: 100%;
+  }
+
+  .vitrine-card-preview {
+    width: 100%;
+    height: 120px;
+  }
+
+  .vitrine-card-acoes {
+    flex-direction: column;
+  }
+}

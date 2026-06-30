@@ -1,0 +1,442 @@
+/* ══════════════════════════════════════
+   Página Perfil
+══════════════════════════════════════ */
+
+.perfil-page {
+  width: 100%;
+  max-width: 980px;
+  padding: 32px 40px 56px;
+  margin: 0 auto;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.perfil-header {
+  margin-bottom: 28px;
+}
+
+.perfil-header h1 {
+  font-size: 1.7rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+
+.perfil-header p {
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+
+/* ══════════════════════════════════════
+   Cards principais
+══════════════════════════════════════ */
+
+.perfil-card {
+  background: white;
+  border-radius: 16px;
+  padding: 26px 28px;
+  margin-bottom: 20px;
+  border: 1px solid #eef1f5;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 14px rgba(15, 23, 42, 0.04);
+}
+
+.perfil-card h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.perfil-card h2::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 16px;
+  border-radius: 3px;
+  background: #16a34a;
+}
+
+.perfil-card h3 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.perfil-card p {
+  color: #64748b;
+  font-size: 0.88rem;
+}
+
+
+/* ══════════════════════════════════════
+   Seção da logo
+══════════════════════════════════════ */
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo-placeholder {
+  width: 78px;
+  height: 78px;
+  border-radius: 16px;
+  border: 2px dashed #c7e3cf;
+  background: #f0fdf4;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.8rem;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.perfil-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.logo-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.logo-status {
+  color: #d97706;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+
+/* ══════════════════════════════════════
+   Formulários
+══════════════════════════════════════ */
+
+.perfil-card label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.campo-obrigatorio {
+  color: #d32f2f;
+  font-weight: 700;
+}
+
+.perfil-card input,
+.perfil-card select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  background: #f8fafc;
+  margin-bottom: 18px;
+  color: #0f172a;
+  font-size: 0.92rem;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+}
+
+.perfil-card select {
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 18px;
+  padding-right: 40px;
+}
+
+.perfil-card input:hover,
+.perfil-card select:hover {
+  border-color: #d1d5db;
+}
+
+.perfil-card input:focus,
+.perfil-card select:focus {
+  outline: none;
+  border-color: #16a34a;
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.12);
+}
+
+.perfil-card input:disabled,
+.perfil-card input[readonly] {
+  background: #f1f5f9;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.campo-ajuda {
+  display: block;
+  margin: -14px 0 18px;
+  font-size: 0.74rem;
+  color: #94a3b8;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+
+/* ══════════════════════════════════════
+   Status / Senha
+══════════════════════════════════════ */
+
+.password-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.password-section h2 {
+  margin-bottom: 6px;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.status-badge::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.status-badge.ativo {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-badge.ativo::before {
+  background: #16a34a;
+}
+
+.status-badge.inativo {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.status-badge.inativo::before {
+  background: #dc2626;
+}
+
+
+/* ══════════════════════════════════════
+   Botões
+══════════════════════════════════════ */
+
+.btn-primary {
+  background: #16a34a;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.btn-primary:hover {
+  background: #15803d;
+}
+
+.btn-secondary {
+  background: white;
+  color: #475569;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.btn-secondary:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.btn-secondary:disabled,
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-password {
+  background: white;
+  color: #0f172a;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+
+.btn-password:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.btn-save {
+  background: #16a34a;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 64px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(22, 163, 74, 0.28);
+  transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+}
+
+.btn-save:hover {
+  background: #15803d;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(22, 163, 74, 0.32);
+}
+
+.btn-save:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.perfil-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.upload-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* ══════════════════════════════════════
+   Feedback de salvamento
+══════════════════════════════════════ */
+
+.perfil-feedback {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 16px;
+  animation: fadeIn 0.2s ease;
+}
+
+.perfil-feedback--sucesso {
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.perfil-feedback--erro {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.perfil-feedback-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.perfil-feedback--sucesso .perfil-feedback-icon {
+  background: #166534;
+  color: white;
+}
+
+.perfil-feedback--erro .perfil-feedback-icon {
+  background: #991b1b;
+  color: white;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ══════════════════════════════════════
+   Carregando
+══════════════════════════════════════ */
+
+.perfil-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+
+/* ══════════════════════════════════════
+   Responsividade
+══════════════════════════════════════ */
+
+@media (max-width: 900px) {
+  .perfil-page {
+    padding: 24px 18px 40px;
+  }
+
+  .logo-section,
+  .password-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo-actions {
+    margin-left: 0;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-save {
+    width: 100%;
+  }
+}

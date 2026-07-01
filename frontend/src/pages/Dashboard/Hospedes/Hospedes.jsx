@@ -8,7 +8,7 @@ import {
   deletarReserva,
 } from "../../../services/reservaService";
 import { listarQuartos } from "../../../services/quartoService";
-import { listarHospedes, criarHospede } from "../../../services/hospedeService";
+import { listarHospedes, criarHospede, deletarHospede } from "../../../services/hospedeService";
 import { useToast } from "../../../components/Feedback/useToast";
 import ConfirmDialog from "../../../components/Feedback/ConfirmDialog";
 import "./Hospedes.css";
@@ -92,7 +92,23 @@ export default function GestaoHospedes() {
 
   // menu de ações inline
   const [menuAberto, setMenuAberto] = useState(null);
+  const [menuAbrirParaCima, setMenuAbrirParaCima] = useState(false);
   const [acaoLoading, setAcaoLoading] = useState(false);
+
+  // Altura aproximada do menu de ações (3 itens), usada para decidir
+  // se cabe espaço abaixo do botão antes de abri-lo para baixo.
+  const ALTURA_MENU_ACOES = 140;
+
+  function alternarMenuAcoes(e, id) {
+    if (menuAberto === id) {
+      setMenuAberto(null);
+      return;
+    }
+    const rect = e.currentTarget.getBoundingClientRect();
+    const espacoAbaixo = window.innerHeight - rect.bottom;
+    setMenuAbrirParaCima(espacoAbaixo < ALTURA_MENU_ACOES);
+    setMenuAberto(id);
+  }
 
   // busca de hóspede no modal
   const [buscaHospede, setBuscaHospede]           = useState("");
@@ -106,6 +122,14 @@ export default function GestaoHospedes() {
   const [novoHospede, setNovoHospede] = useState({ nome: "", cpf: "", telefone: "" });
   const [salvandoHospede, setSalvandoHospede] = useState(false);
   const [erroNovoHospede, setErroNovoHospede] = useState(null);
+
+  // Guarda o id de um hóspede criado via cadastro rápido *dentro do modal
+  // atual*. Se o modal for fechado sem a reserva ser efetivamente salva,
+  // esse cadastro é revertido — evita que ele fique "solto" no sistema
+  // (existindo no backend mas sem aparecer na listagem, que é baseada em
+  // reservas) só reaparecendo depois se alguém criar uma reserva pra ele
+  // pelo calendário.
+  const hospedeOrfaoRef = useRef(null);
 
   const [form, setForm] = useState({
     hospede_id:      "",
@@ -250,6 +274,7 @@ export default function GestaoHospedes() {
       setHospedes((lista) => [...lista, criado]);
       selecionarHospede(criado);
       fecharCadastroRapido();
+      hospedeOrfaoRef.current = criado.id;
     } catch (e) {
       const detalhe = e?.response?.data?.detail;
       setErroNovoHospede(typeof detalhe === "string" ? detalhe : "Não foi possível cadastrar o hóspede.");
@@ -301,7 +326,24 @@ export default function GestaoHospedes() {
     setHospedesFiltrados([]);
     setMostrarDropHospede(false);
     setErroForm(null);
+    hospedeOrfaoRef.current = null;
     setAbrirModal(true);
+  }
+
+  async function fecharModalReserva() {
+    setAbrirModal(false);
+
+    const idOrfao = hospedeOrfaoRef.current;
+    if (!idOrfao) return;
+
+    hospedeOrfaoRef.current = null;
+    try {
+      await deletarHospede(idOrfao);
+      setHospedes((lista) => lista.filter((h) => h.id !== idOrfao));
+    } catch {
+      // se não for possível excluir (ex: já foi vinculado a algo nesse
+      // meio tempo), apenas mantemos o cadastro — não é crítico.
+    }
   }
 
   function extrairMensagemErro(e, fallback) {
@@ -363,6 +405,7 @@ export default function GestaoHospedes() {
         forma_pagamento: form.forma_pagamento,
         observacoes:     form.observacoes || null,
       });
+      hospedeOrfaoRef.current = null; // reserva confirmada: hóspede não é mais órfão
       setAbrirModal(false);
       await carregarReservas();
     } catch (e) {
@@ -556,14 +599,16 @@ export default function GestaoHospedes() {
                       </td>
                       <td>
                         <div
-                          className="acoes-wrapper"
+                          className={`acoes-wrapper ${
+                            menuAberto === r.id && menuAbrirParaCima
+                              ? "acoes-wrapper--abrir-para-cima"
+                              : ""
+                          }`}
                           onClick={(e) => e.stopPropagation()}
                         >
                           <button
                             className="botao-acoes"
-                            onClick={() =>
-                              setMenuAberto(menuAberto === r.id ? null : r.id)
-                            }
+                            onClick={(e) => alternarMenuAcoes(e, r.id)}
                           >
                             •••
                           </button>
@@ -604,7 +649,7 @@ export default function GestaoHospedes() {
 
         {/* Modal nova reserva */}
         {abrirModal && (
-          <div className="modal-overlay" onClick={() => setAbrirModal(false)}>
+          <div className="modal-overlay" onClick={fecharModalReserva}>
             <div className="modal" onClick={(e) => e.stopPropagation()}>
 
               <div className="modal-cabecalho">
@@ -614,7 +659,7 @@ export default function GestaoHospedes() {
                     Preencha os dados para criar uma nova reserva
                   </p>
                 </div>
-                <button className="botao-fechar" onClick={() => setAbrirModal(false)}>
+                <button className="botao-fechar" onClick={fecharModalReserva}>
                   ✕
                 </button>
               </div>

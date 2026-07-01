@@ -237,9 +237,13 @@ export default function Calendario() {
     );
   });
 
+  // Reservas canceladas não devem contar como receita prevista — só
+  // entram no cálculo reservas que ainda podem gerar receita de fato.
   const receitaPrevista = eventos.reduce(
     (acc, item) =>
-      acc + Number(item.extendedProps.valor_total || 0),
+      item.extendedProps.status === "cancelada"
+        ? acc
+        : acc + Number(item.extendedProps.valor_total || 0),
     0
   );
 

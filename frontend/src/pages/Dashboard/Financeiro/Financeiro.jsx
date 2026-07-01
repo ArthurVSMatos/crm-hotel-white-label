@@ -8,6 +8,7 @@ import {
   editarDespesa,
   deletarDespesa,
 } from "../../../services/financeiroService";
+import { listarReservas } from "../../../services/reservaService";
 
 const NOMES_MES = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
 
@@ -100,11 +101,28 @@ export default function Financeiro() {
         }
       });
 
+      // "Pendente" reflete o que ainda falta receber das reservas do
+      // Calendário: diferença entre valor_total e valor_pago de reservas
+      // que ainda podem gerar receita (reservas canceladas não entram,
+      // já que não vão ser pagas).
+      let totalPendente = 0;
+      try {
+        const reservas = await listarReservas();
+        totalPendente = reservas.reduce((soma, r) => {
+          if (r.status === "cancelada") return soma;
+          const falta = Number(r.valor_total || 0) - Number(r.valor_pago || 0);
+          return soma + Math.max(0, falta);
+        }, 0);
+      } catch {
+        // se não conseguir carregar as reservas, mantém o pendente em 0
+        // em vez de quebrar o resto do resumo financeiro
+      }
+
       setResumo({
         entradas: totalEntradas,
         saidas: totalSaidas,
         saldo: totalEntradas - totalSaidas,
-        pendente: 0,
+        pendente: totalPendente,
       });
     } catch (error) {
       console.log(error);

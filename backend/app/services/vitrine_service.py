@@ -7,6 +7,7 @@ from sqlalchemy.orm import Session
 from app.models.hotel import Hotel
 from app.models.whitelabel import ConfiguracaoWhitelabel
 from app.models.quarto import Quarto
+from app.models.quarto import StatusQuarto
 
 
 def slugificar(texto: str) -> str:
@@ -155,10 +156,6 @@ class VitrineService:
 
             dados["vitrine_slug"] = novo_slug
         elif "vitrine_slug" in dados:
-            # o campo foi enviado vazio (ex: o hoteleiro apagou o texto).
-            # Nunca deixamos a vitrine sem slug — sem ele, o link publico
-            # para de funcionar e a pagina fica inacessivel. Mantemos o
-            # slug atual em vez de salvar vazio.
             dados.pop("vitrine_slug")
 
         for chave, valor in dados.items():
@@ -195,14 +192,12 @@ class VitrineService:
 
         if not hotel:
             return None
-
-        # so quartos marcados como visiveis na vitrine, do hotel certo
-        # (isolamento: um hotel jamais ve quartos de outro)
         quartos = db.query(
             Quarto
         ).filter(
             Quarto.hotel_id == hotel.id,
-            Quarto.visivel_vitrine == True  # noqa: E712
+            Quarto.visivel_vitrine == True,  # noqa: E712
+            Quarto.status == StatusQuarto.disponivel
         ).all()
 
         return {

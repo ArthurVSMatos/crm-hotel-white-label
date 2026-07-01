@@ -149,7 +149,7 @@ export default function ReservaModal({
   return (
     <div className="modal-overlay">
       <div className="modal">
-        <div className="modal-header">
+        <div className="modal-header modal-header--criar">
           <h2>Nova Reserva</h2>
           <button onClick={fechar}>✕</button>
         </div>

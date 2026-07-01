@@ -149,12 +149,8 @@ export default function VitrinePublica() {
                   )}
                 </div>
                 <div className="vitrine-quarto-info">
-                  <h3>Quarto {quarto.numero}</h3>
-                  <p>
-                    {quarto.descricao_vitrine ||
-                      quarto.descricao ||
-                      `Acomoda até ${quarto.capacidade} pessoa(s).`}
-                  </p>
+                  <h3>{quarto.numero}</h3>
+                  <p>Até {quarto.capacidade} pessoa(s)</p>
                   <div className="vitrine-quarto-rodape">
                     <div>
                       <span className="vitrine-quarto-preco">{formatarMoeda(quarto.valor_diaria)}</span>

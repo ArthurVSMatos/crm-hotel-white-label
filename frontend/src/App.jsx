@@ -31,7 +31,7 @@ export default function App() {
 
       <Routes>
 
-        {/* raiz */}
+        {/* parte raiz */}
         <Route
           path="/"
           element={
@@ -39,7 +39,7 @@ export default function App() {
           }
         />
 
-        {/* publicas */}
+        {/* parte login/auth */}
         <Route
           path="/login"
           element={<Login />}
@@ -60,13 +60,13 @@ export default function App() {
           element={<ResetPassword />}
         />
 
-      {/* vitrine publica de cada hotel sem login, isolada por ""slug" */}
+        {/* parte vitrine */}
         <Route
           path="/v/:slug"
           element={<VitrinePublica />}
         />
 
-        {/* protegidas */}
+        {/* parte dashboard */}
         <Route
           path="/dashboard"
           element={
@@ -76,6 +76,7 @@ export default function App() {
           }
         />
 
+        {/* parte financeiro */}
         <Route
           path="/financeiro"
           element={
@@ -85,6 +86,7 @@ export default function App() {
           }
         />
 
+        {/* parte hospedes */}
         <Route
           path="/hospedes"
           element={
@@ -94,6 +96,7 @@ export default function App() {
           }
         />
 
+        {/* parte quartos */}
         <Route
           path="/quartos"
           element={
@@ -103,6 +106,7 @@ export default function App() {
           }
         />
 
+        {/* parte calendario */}
         <Route
           path="/calendario"
           element={
@@ -112,6 +116,7 @@ export default function App() {
           }
         />
 
+        {/* parte whitelabel */}
         <Route
           path="/whitelabel"
           element={
@@ -121,6 +126,7 @@ export default function App() {
           }
         />
 
+        {/* parte perfil */}
         <Route
           path="/perfil"
           element={

@@ -31,6 +31,28 @@
   color: #014c45;
 }
 
+/* Diferenciação visual entre "Nova Reserva" e "Detalhes/Editar Reserva" —
+   evita que as duas telas pareçam a mesma coisa numa olhada rápida. */
+.modal-header--criar {
+  border-bottom-color: #10b981;
+  border-bottom-width: 3px;
+}
+
+.modal-header--criar h2::before {
+  content: "＋ ";
+  color: #10b981;
+}
+
+.modal-header--editar {
+  border-bottom-color: #2563eb;
+  border-bottom-width: 3px;
+}
+
+.modal-header--editar h2::before {
+  content: "✎ ";
+  color: #2563eb;
+}
+
 .modal-header button {
   border: none;
   background: none;

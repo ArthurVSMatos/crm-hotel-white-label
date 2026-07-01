@@ -11,14 +11,22 @@ from app.middlewares import (
     TenantMiddleware,
     ExceptionMiddleware
 )
+
+# parte login/auth
 from app.routes.auth import router as auth_router
+# parte hotel
 from app.routes.hotel import router as hotel_router
+# parte quartos
 from app.routes.quartos import router as quarto_router
+# parte hospedes
 from app.routes.hospede import router as hospede_router
+# parte reservas/calendario
 from app.routes.reserva import router as reserva_router
+# parte dashboard
 from app.routes.dashboard import (
     router as dashboard_router
 )
+# parte financeiro
 from app.routes.despesas import router as despesa_router
 from app.routes.financeiro import (
     router as financeiro_router
@@ -26,6 +34,7 @@ from app.routes.financeiro import (
 from app.routes.financeiro_pdf import (
     router as financeiro_pdf_router     
 )
+# parte vitrine
 from app.routes.vitrine import (
     router as vitrine_router
 )
@@ -108,7 +117,7 @@ app.add_middleware(AuthMiddleware)
 app.add_middleware(TenantMiddleware)
 
 
-#rotas basicas
+# parte basica
 @app.get("/")
 def root():
 
@@ -138,7 +147,7 @@ def api_info():
     }
 
 
-#rotas de autenticacao
+# parte login/auth
 
 app.include_router(
     auth_router,
@@ -147,12 +156,16 @@ app.include_router(
 )
 
 
+# parte hotel
+
 app.include_router(
     hotel_router,
     prefix="/hotel",
     tags=["Hotel"]
 )
 
+
+# parte quartos
 
 app.include_router(
     quarto_router,
@@ -161,6 +174,8 @@ app.include_router(
 )
 
 
+# parte hospedes
+
 app.include_router(
     hospede_router,
     prefix="/hospedes",
@@ -168,11 +183,15 @@ app.include_router(
 )
 
 
+# parte reservas/calendario
+
 app.include_router(
     reserva_router,
     prefix="/reservas",
     tags=["Reservas"]
 )
+
+# parte financeiro
 
 app.include_router(
     despesa_router,
@@ -192,11 +211,15 @@ app.include_router(
     tags=["Financeiro"]
 )
 
+# parte dashboard
+
 app.include_router(
     dashboard_router,
     prefix="/dashboard",
     tags=["Dashboard"]
 )
+
+# parte vitrine
 
 app.include_router(
     vitrine_router,
